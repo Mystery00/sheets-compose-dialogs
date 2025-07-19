@@ -95,5 +95,5 @@ dependencies {
 }
 
 mavenPublishing {
-    publishToMavenCentral(SonatypeHost.S01, automaticRelease = true)
+    publishToMavenCentral("https://maven.pkg.github.com/Mystery00/sheets-compose-dialogs", automaticRelease = true)
 }
