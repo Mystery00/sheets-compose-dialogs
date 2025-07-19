@@ -63,7 +63,7 @@ kotlin {
     }
 }
 
-mavenPublishing {
+publishing {
     repositories {
         maven {
             name = "GitHubPackages"

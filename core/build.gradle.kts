@@ -107,7 +107,7 @@ dependencies {
     coreLibraryDesugaring(libs.desugar)
 }
 
-mavenPublishing {
+publishing {
     repositories {
         maven {
             name = "GitHubPackages"
