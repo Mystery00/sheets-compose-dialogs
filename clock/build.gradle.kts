@@ -85,5 +85,14 @@ dependencies {
 }
 
 mavenPublishing {
-    publishToMavenCentral("https://maven.pkg.github.com/Mystery00/sheets-compose-dialogs", automaticRelease = true)
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/Mystery00/sheets-compose-dialogs")
+            credentials {
+                username = System.getenv("GITHUB_USERNAME") ?: project.property("gpr.user") as String? ?: ""
+                password = System.getenv("GITHUB_PASSWORD") ?: project.property("gpr.key") as String? ?: ""
+            }
+        }
+    }
 }
