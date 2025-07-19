@@ -22,5 +22,6 @@ jobs:
       - name: Publish release
         run: ./gradlew publish -x lint -x lintVitalRelease
         env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_USERNAME: ${{ secrets.SONATYPE_NEXUS_USERNAME }}
           GITHUB_PASSWORD: ${{ secrets.SONATYPE_NEXUS_PASSWORD }}
