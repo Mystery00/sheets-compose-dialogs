@@ -24,6 +24,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.ui.window.DialogProperties
 import com.maxkeppeker.sheets.core.models.base.rememberUseCaseState
 import com.maxkeppeler.sheets.state.StateDialog
 import com.maxkeppeler.sheets.state.models.ProgressIndicator
@@ -47,6 +48,7 @@ internal fun StateSample3(closeSelection: () -> Unit) {
     )
     StateDialog(
         state = rememberUseCaseState(visible = true, onCloseRequest = { closeSelection() }),
-        config = StateConfig(state = state)
+        config = StateConfig(state = state),
+        properties = DialogProperties()
     )
 }

@@ -20,6 +20,7 @@ package com.maxkeppeler.sheets.emoji.views
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.combinedClickable
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
@@ -64,7 +65,7 @@ internal fun EmojiItemComponent(
         onClick = onClick,
     )
 
-    BoxWithConstraints(
+    Box(
         modifier = Modifier
             .testTags(TestTags.EMOJI_SELECTION, emoji.unicode)
             .onGloballyPositioned {
@@ -88,7 +89,6 @@ internal fun EmojiItemComponent(
     ) {
         Text(
             modifier = Modifier.align(Alignment.Center),
-            fontSize = constraints.maxWidth.sp,
             text = emoji.unicode
         )
     }
