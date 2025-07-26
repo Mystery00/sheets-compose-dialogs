@@ -98,7 +98,7 @@ internal fun OptionListItemComponent(
 
         InfoContainerComponent(
             config = config,
-            modifier = Modifier.align(Alignment.TopEnd),
+            modifier = Modifier.align(Alignment.CenterEnd),
             optionInfo = option.details,
             onClick = onInfoClick
         )

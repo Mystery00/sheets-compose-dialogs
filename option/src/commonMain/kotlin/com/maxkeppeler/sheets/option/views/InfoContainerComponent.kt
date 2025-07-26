@@ -52,7 +52,7 @@ internal fun InfoContainerComponent(
             colors = IconButtonDefaults.filledIconButtonColors(containerColor = MaterialTheme.colorScheme.background),
             modifier = Modifier
                 .shadow(1.dp, RoundedCornerShape(50))
-                .size(48.dp),
+                .size(24.dp),
             onClick = { onClick() }
         ) {
 

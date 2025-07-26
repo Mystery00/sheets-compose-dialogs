@@ -114,7 +114,7 @@ internal fun OptionGridItemComponent(
         }
 
         InfoContainerComponent(
-            modifier = Modifier.align(Alignment.TopEnd),
+            modifier = Modifier.align(Alignment.CenterEnd),
             optionInfo = option.details,
             onClick = onInfoClick,
             config = config,
