@@ -1,4 +1,3 @@
-import com.vanniktech.maven.publish.SonatypeHost
 
 plugins {
     alias(libs.plugins.android.library)
@@ -41,11 +40,11 @@ kotlin {
     macosX64()
     macosArm64()
 
-    js(IR) {
-        moduleName = Modules.COLOR.moduleName
-        browser()
-        binaries.executable()
-    }
+//    js(IR) {
+//        moduleName = Modules.COLOR.moduleName
+//        browser()
+//        binaries.executable()
+//    }
 
     applyDefaultHierarchyTemplate()
 

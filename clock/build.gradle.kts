@@ -1,4 +1,3 @@
-import com.vanniktech.maven.publish.SonatypeHost
 
 /*
  *  Copyright (C) 2022-2024. Maximilian Keppeler (https://www.maxkeppeler.com)
@@ -57,11 +56,11 @@ kotlin {
     macosX64()
     macosArm64()
 
-    js(IR) {
-        moduleName = Modules.CLOCK.moduleName
-        browser()
-        binaries.executable()
-    }
+//    js(IR) {
+//        moduleName = Modules.CLOCK.moduleName
+//        browser()
+//        binaries.executable()
+//    }
 
     applyDefaultHierarchyTemplate()
 
