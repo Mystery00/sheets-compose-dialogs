@@ -41,6 +41,9 @@ internal fun InputSample4(closeSelection: () -> Unit) {
             validationListener = { value ->
                 if ((value?.length ?: 0) >= 3) ValidationResult.Valid
                 else ValidationResult.Invalid("Name needs to be at least 3 letters long")
+            },
+            resultListener = { result ->
+                // Handle selection
             }
         )
     )
@@ -49,7 +52,7 @@ internal fun InputSample4(closeSelection: () -> Unit) {
         state = rememberUseCaseState(visible = true, onCloseRequest = { closeSelection() }),
         selection = InputSelection(
             input = inputOptions,
-            onPositiveClick = { result ->
+            onPositiveClick = {
                 // Handle selection
             },
         )

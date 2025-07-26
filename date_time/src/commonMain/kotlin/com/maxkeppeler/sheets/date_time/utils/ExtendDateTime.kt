@@ -33,7 +33,6 @@ internal fun Month.length(leapYear: Boolean): Int = when (this) {
     Month.OCTOBER -> 31
     Month.NOVEMBER -> 30
     Month.DECEMBER -> 31
-    else -> 30
 }
 
 /**

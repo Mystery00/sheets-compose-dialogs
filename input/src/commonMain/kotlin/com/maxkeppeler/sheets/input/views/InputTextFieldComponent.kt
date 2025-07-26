@@ -20,6 +20,7 @@ package com.maxkeppeler.sheets.input.views
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.*
+import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -74,7 +75,7 @@ internal fun InputTextFieldComponent(
                         keyboardActions = input.keyboardActions,
                         singleLine = input.singleLine,
                         maxLines = input.maxLines,
-                        shape = input.shape ?: TextFieldDefaults.outlinedShape,
+                        shape = input.shape ?: OutlinedTextFieldDefaults.shape,
                     )
                 }
                 InputTextFieldType.DEFAULT -> {
@@ -91,7 +92,7 @@ internal fun InputTextFieldComponent(
                         keyboardActions = input.keyboardActions,
                         singleLine = input.singleLine,
                         maxLines = input.maxLines,
-                        shape = input.shape ?: TextFieldDefaults.outlinedShape,
+                        shape = input.shape ?: OutlinedTextFieldDefaults.shape,
                     )
                 }
             }

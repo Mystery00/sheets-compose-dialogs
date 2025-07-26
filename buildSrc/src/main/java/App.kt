@@ -3,7 +3,7 @@ object App {
     const val ID = "com.mk.sheets.compose"
 
     const val COMPILE_SDK = 36
-    const val MIN_SDK = 21
+    const val MIN_SDK = 26
     const val TARGET_SDK = 36
 
     const val VERSION_CODE = 13

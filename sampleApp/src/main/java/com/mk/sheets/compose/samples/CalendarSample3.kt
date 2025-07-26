@@ -29,15 +29,25 @@ import com.maxkeppeler.sheets.calendar.CalendarDialog
 import com.maxkeppeler.sheets.calendar.models.CalendarConfig
 import com.maxkeppeler.sheets.calendar.models.CalendarSelection
 import com.maxkeppeler.sheets.calendar.models.CalendarStyle
+import com.maxkeppeler.sheets.calendar.utils.LocalDateRange
+import kotlinx.datetime.toKotlinLocalDate
 import java.time.LocalDate
 
 @Composable
 internal fun CalendarSample3(closeSelection: UseCaseState.() -> Unit) {
 
-    val timeBoundary = LocalDate.now().let { now -> now.minusYears(2)..now }
+    val timeBoundary = LocalDate.now().let { now ->
+        val start = now.minusYears(2).toKotlinLocalDate()
+        val end = now.toKotlinLocalDate()
+        start..end
+    }
     val selectedRange = remember {
-        val default = LocalDate.now().minusYears(2).let { time -> time.plusDays(5)..time.plusDays(8) }
-        mutableStateOf(default.toRange())
+        val default = LocalDate.now().minusYears(2).let { time ->
+            val start = time.plusDays(5).toKotlinLocalDate()
+            val end = time.plusDays(8).toKotlinLocalDate()
+            start..end
+        }
+        mutableStateOf(LocalDateRange(default.start, default.endInclusive))
     }
 
     CalendarDialog(
@@ -51,7 +61,7 @@ internal fun CalendarSample3(closeSelection: UseCaseState.() -> Unit) {
         selection = CalendarSelection.Period(
             selectedRange = selectedRange.value
         ) { startDate, endDate ->
-            selectedRange.value = Range(startDate, endDate)
+            selectedRange.value = LocalDateRange(startDate, endDate)
         },
     )
 }

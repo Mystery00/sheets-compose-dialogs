@@ -208,21 +208,23 @@ internal class CalendarState(
     }
 
     fun onMonthClick(month: Month) {
-        cameraDate = LocalDate(cameraDate.year, month, cameraDate.dayOfMonth).startOfWeekOrMonth
+        cameraDate = LocalDate(cameraDate.year, month, cameraDate.day).startOfWeekOrMonth
         mode = CalendarDisplayMode.CALENDAR
         refreshData()
     }
 
     fun onYearClick(year: Int) {
-        var newDate = LocalDate(year, cameraDate.month, cameraDate.dayOfMonth)
+        var newDate = LocalDate(year, cameraDate.month, cameraDate.day)
         // Check if current new date would be within the boundary otherwise reset to month within boundary
         newDate = when {
             newDate.isBefore(config.boundary.start) -> {
-                LocalDate(newDate.year, config.boundary.start.month, config.boundary.start.dayOfMonth)
+                LocalDate(newDate.year, config.boundary.start.month, config.boundary.start.day)
             }
 
             newDate.isAfter(config.boundary.endInclusive) -> {
-                LocalDate(newDate.year, config.boundary.endInclusive.month, config.boundary.endInclusive.dayOfMonth)
+                LocalDate(newDate.year, config.boundary.endInclusive.month,
+                    config.boundary.endInclusive.day
+                )
             }
 
             else -> newDate

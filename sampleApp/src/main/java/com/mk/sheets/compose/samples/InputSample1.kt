@@ -40,7 +40,10 @@ internal fun InputSample1(closeSelection: () -> Unit) {
             ),
             items = listOf("GitHub", "Twitter", "Other"),
             required = true,
-            key = "Source"
+            key = "Source",
+            resultListener = { result ->
+                // Handle selection
+            }
         ),
     )
 
@@ -48,8 +51,7 @@ internal fun InputSample1(closeSelection: () -> Unit) {
         state = rememberUseCaseState(visible = true, onCloseRequest = { closeSelection() }),
         selection = InputSelection(
             input = inputOptions,
-            onPositiveClick = { result ->
-                val selectionIndex = result.getInt("Source") // or index 2 if no key was set
+            onPositiveClick = {
                 // Handle selection
             },
         )

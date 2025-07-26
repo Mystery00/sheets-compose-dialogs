@@ -13,9 +13,7 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-@file:OptIn(ExperimentalFoundationApi::class, ExperimentalMaterial3Api::class,
-    ExperimentalMaterial3Api::class
-)
+@file:OptIn(ExperimentalFoundationApi::class, ExperimentalMaterial3Api::class)
 
 package com.mk.sheets.compose.main
 
@@ -89,7 +87,7 @@ private fun TopBar() {
     val gitHubUrl = "https://github.com/maxkeppeler/sheets-compose-dialogs"
     val paypalUrl = "https://www.paypal.com/paypalme/maximiliankeppeler"
 
-    SmallTopAppBar(
+    TopAppBar(
         title = {
             Text(
                 text = stringResource(R.string.app_name_full),

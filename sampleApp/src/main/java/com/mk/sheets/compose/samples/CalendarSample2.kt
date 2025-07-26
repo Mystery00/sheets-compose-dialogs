@@ -27,12 +27,13 @@ import com.maxkeppeler.sheets.calendar.CalendarDialog
 import com.maxkeppeler.sheets.calendar.models.CalendarConfig
 import com.maxkeppeler.sheets.calendar.models.CalendarSelection
 import com.maxkeppeler.sheets.calendar.models.CalendarStyle
+import kotlinx.datetime.toKotlinLocalDate
 import java.time.LocalDate
 
 @Composable
 internal fun CalendarSample2(closeSelection: UseCaseState.() -> Unit) {
 
-    val selectedDate = remember { mutableStateOf<LocalDate?>(LocalDate.now().minusDays(3)) }
+    val selectedDate = remember { mutableStateOf(LocalDate.now().minusDays(3).toKotlinLocalDate()) }
 
     CalendarDialog(
         state = rememberUseCaseState(visible = true, true, onCloseRequest = closeSelection),

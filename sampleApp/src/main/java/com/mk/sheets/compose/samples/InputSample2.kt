@@ -36,7 +36,10 @@ internal fun InputSample2(closeSelection: () -> Unit) {
             ),
             items = listOf("Banana", "Mango", "Oranges", "Pineapple"),
             required = true,
-            key = "Fruits"
+            key = "Fruits",
+            resultListener = { result ->
+                // Handle selection
+            },
         ),
     )
 
@@ -44,8 +47,7 @@ internal fun InputSample2(closeSelection: () -> Unit) {
         state = rememberUseCaseState(visible = true, onCloseRequest = { closeSelection() }),
         selection = InputSelection(
             input = inputOptions,
-            onPositiveClick = { result ->
-                val selectionIndex = result.getIntArray("Fruits") // or index 0 if no key was set
+            onPositiveClick = {
                 // Handle selection
             },
         )

@@ -18,6 +18,8 @@ package com.maxkeppeler.sheets.input.views
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Divider
+import androidx.compose.material3.DividerDefaults
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -33,7 +35,7 @@ import com.maxkeppeker.sheets.core.utils.testTags
 internal fun InputDividerComponent(
     index: Int,
 ) {
-    Divider(
+    HorizontalDivider(
         Modifier
             .testTags(TestTags.INPUT_ITEM_DIVIDER, index)
             .fillMaxWidth()
@@ -41,6 +43,7 @@ internal fun InputDividerComponent(
                 top = 8.dp,
                 bottom = 4.dp,
             ),
-        color = MaterialTheme.colorScheme.outlineVariant
+        DividerDefaults.Thickness,
+        MaterialTheme.colorScheme.outlineVariant
     )
 }

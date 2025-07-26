@@ -13,10 +13,7 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-@file:OptIn(
-    ExperimentalMaterialApi::class, ExperimentalMaterialApi::class,
-    ExperimentalMaterialApi::class, ExperimentalMaterialApi::class
-)
+@file:OptIn(ExperimentalMaterial3Api::class)
 
 package com.mk.sheets.compose
 
@@ -24,11 +21,10 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.ExperimentalMaterialApi
-import androidx.compose.material.ModalBottomSheetValue
-import androidx.compose.material.rememberModalBottomSheetState
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
@@ -41,7 +37,7 @@ import com.mk.sheets.compose.samples.BottomSheetSample
 fun ShowcaseBottomSheetScreen() {
 
     val coroutine = rememberCoroutineScope()
-    val state = rememberModalBottomSheetState(ModalBottomSheetValue.Hidden)
+    val state = rememberModalBottomSheetState()
 
     BottomSheetSample(state) {
         Column(

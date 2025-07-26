@@ -21,6 +21,8 @@ import androidx.compose.runtime.remember
 import com.maxkeppeker.sheets.core.models.base.rememberUseCaseState
 import com.maxkeppeler.sheets.date_time.DateTimeDialog
 import com.maxkeppeler.sheets.date_time.models.DateTimeSelection
+import kotlinx.datetime.toJavaLocalDateTime
+import kotlinx.datetime.toKotlinLocalTime
 import java.time.LocalDateTime
 
 @Composable
@@ -34,9 +36,9 @@ internal fun DateTimeSample1(closeSelection: () -> Unit) {
         state = rememberUseCaseState(visible = true, onCloseRequest = { closeSelection() }),
         selection = DateTimeSelection.DateTime(
 //            selectedDate = selectedDateTime.value!!.toLocalDate(),
-            selectedTime = selectedDateTime.value!!.toLocalTime(),
+            selectedTime = selectedDateTime.value!!.toLocalTime().toKotlinLocalTime(),
         ) { newDateTime ->
-            selectedDateTime.value = newDateTime
+            selectedDateTime.value = newDateTime.toJavaLocalDateTime()
         },
     )
 }

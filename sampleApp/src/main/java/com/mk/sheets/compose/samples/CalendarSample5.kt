@@ -27,7 +27,7 @@ import com.maxkeppeler.sheets.calendar.CalendarDialog
 import com.maxkeppeler.sheets.calendar.models.CalendarConfig
 import com.maxkeppeler.sheets.calendar.models.CalendarSelection
 import com.maxkeppeler.sheets.calendar.models.CalendarStyle
-import java.time.LocalDate
+import kotlinx.datetime.LocalDate
 
 @Composable
 internal fun CalendarSample5(closeSelection: UseCaseState.() -> Unit) {

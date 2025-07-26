@@ -24,7 +24,7 @@ import androidx.compose.runtime.remember
 import com.maxkeppeker.sheets.core.models.base.rememberUseCaseState
 import com.maxkeppeler.sheets.date_time.DateTimeDialog
 import com.maxkeppeler.sheets.date_time.models.DateTimeSelection
-import java.time.LocalTime
+import kotlinx.datetime.LocalTime
 
 @Composable
 internal fun DateTimeSample3(closeSelection: () -> Unit) {

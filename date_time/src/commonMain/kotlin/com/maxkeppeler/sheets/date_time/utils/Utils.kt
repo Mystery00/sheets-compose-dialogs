@@ -20,6 +20,7 @@ import com.maxkeppeler.sheets.date_time.models.UnitOptionEntry
 import com.maxkeppeler.sheets.date_time.models.UnitSelection
 import com.maxkeppeler.sheets.date_time.models.UnitType
 import kotlinx.datetime.*
+import kotlinx.datetime.LocalDate
 import kotlinx.datetime.format.FormatStringsInDatetimeFormats
 import kotlinx.datetime.format.byUnicodePattern
 import org.jetbrains.compose.resources.ExperimentalResourceApi
@@ -50,8 +51,8 @@ internal fun detectUnit(
     val month = unitValues[UnitType.MONTH]
     val date = LocalDate(
         year = unitValues[UnitType.YEAR]?.value ?: now.year,
-        monthNumber = month?.value ?: now.monthNumber,
-        dayOfMonth = 1
+        month = month?.value ?: now.month.number,
+        day = 1
     )
     return when {
         segment.contains(Constants.SYMBOL_SECONDS) ->
@@ -118,9 +119,9 @@ internal fun getInitTypeValues(
         options[UnitType.HOUR]?.getOrNull(hour)
     }
 
-    val year = dateSelection?.let { date -> options[UnitType.YEAR]?.let { it.firstOrNull { it.value == date.year } } }
-    val month = dateSelection?.let { options[UnitType.MONTH]?.getOrNull(it.monthNumber.minus(1)) }
-    val day = dateSelection?.let { options[UnitType.DAY]?.getOrNull(it.dayOfMonth.minus(1)) }
+    val year = dateSelection?.let { date -> options[UnitType.YEAR]?.let { it -> it.firstOrNull { it.value == date.year } } }
+    val month = dateSelection?.let { options[UnitType.MONTH]?.getOrNull(it.month.number.minus(1)) }
+    val day = dateSelection?.let { options[UnitType.DAY]?.getOrNull(it.day.minus(1)) }
 
     return mutableMapOf(
         // Date
@@ -257,8 +258,8 @@ internal fun getMonthOptions(pattern: String): List<UnitOptionEntry> {
                 val currentDate = LocalDate.now()
                 val localDate = LocalDate(
                     year = currentDate.year,
-                    monthNumber = month.number,
-                    dayOfMonth = currentDate.dayOfMonth
+                    month = month.number,
+                    day = currentDate.day
                 )
                 UnitOptionEntry(
                     month.number,

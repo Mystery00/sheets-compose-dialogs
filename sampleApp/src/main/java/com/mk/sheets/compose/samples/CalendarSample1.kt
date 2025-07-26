@@ -27,6 +27,8 @@ import com.maxkeppeler.sheets.calendar.CalendarDialog
 import com.maxkeppeler.sheets.calendar.models.CalendarConfig
 import com.maxkeppeler.sheets.calendar.models.CalendarSelection
 import com.maxkeppeler.sheets.calendar.models.CalendarStyle
+import kotlinx.datetime.toJavaLocalDate
+import kotlinx.datetime.toKotlinLocalDate
 import java.time.LocalDate
 
 @Composable
@@ -34,9 +36,9 @@ internal fun CalendarSample1(closeSelection: UseCaseState.() -> Unit) {
 
     val selectedDates = remember { mutableStateOf<List<LocalDate>>(listOf()) }
     val disabledDates = listOf(
-        LocalDate.now().minusDays(7),
-        LocalDate.now().minusDays(12),
-        LocalDate.now().plusDays(3),
+        LocalDate.now().minusDays(7).toKotlinLocalDate(),
+        LocalDate.now().minusDays(12).toKotlinLocalDate(),
+        LocalDate.now().plusDays(3).toKotlinLocalDate(),
     )
     CalendarDialog(
         state = rememberUseCaseState(visible = true, onCloseRequest = { closeSelection() }),
@@ -47,7 +49,7 @@ internal fun CalendarSample1(closeSelection: UseCaseState.() -> Unit) {
             disabledDates = disabledDates
         ),
         selection = CalendarSelection.Dates { newDates ->
-            selectedDates.value = newDates
+            selectedDates.value = newDates.map { it.toJavaLocalDate() }
         },
     )
 }

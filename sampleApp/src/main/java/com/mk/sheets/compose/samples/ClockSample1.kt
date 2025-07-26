@@ -25,19 +25,19 @@ import com.maxkeppeker.sheets.core.models.base.rememberUseCaseState
 import com.maxkeppeler.sheets.clock.ClockDialog
 import com.maxkeppeler.sheets.clock.models.ClockConfig
 import com.maxkeppeler.sheets.clock.models.ClockSelection
-import java.time.LocalTime
+import kotlinx.datetime.LocalTime
 
 @Composable
 internal fun ClockSample1(closeSelection: () -> Unit) {
 
-    val selectedTime = remember { mutableStateOf(LocalTime.of(8, 20, 0)) }
+    val selectedTime = remember { mutableStateOf(LocalTime(8, 20, 0)) }
     ClockDialog(
         state = rememberUseCaseState(visible = true, onCloseRequest = { closeSelection() }),
         selection = ClockSelection.HoursMinutes { hours, minutes ->
-            selectedTime.value = LocalTime.of(hours, minutes, 0)
+            selectedTime.value = LocalTime(hours, minutes, 0)
         },
         config = ClockConfig(
-            boundary = LocalTime.of(0, 0, 0)..LocalTime.of(12, 59, 0),
+            boundary = LocalTime(0, 0, 0)..LocalTime(12, 59, 0),
             defaultTime = selectedTime.value,
             is24HourFormat = true
         ),

@@ -19,6 +19,7 @@ package com.mk.sheets.compose.samples
 
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.res.painterResource
 import com.maxkeppeker.sheets.core.models.base.IconSource
 import com.maxkeppeker.sheets.core.models.base.rememberUseCaseState
 import com.maxkeppeler.sheets.list.ListDialog
@@ -31,20 +32,20 @@ internal fun ListSample2(closeSelection: () -> Unit) {
 
     val options = listOf(
         ListOption(
-            IconSource(R.drawable.ic_fruit_apple),
+            IconSource(painterResource(R.drawable.ic_fruit_apple)),
             titleText = "Apple"
         ),
         ListOption(
-            IconSource(R.drawable.ic_fruit_watermelon),
+            IconSource(painterResource(R.drawable.ic_fruit_watermelon)),
             titleText = "Watermelon",
         ),
         ListOption(
-            IconSource(R.drawable.ic_fruit_grapes),
+            IconSource(painterResource(R.drawable.ic_fruit_grapes)),
             titleText = "Grapes",
             selected = true
         ),
         ListOption(
-            IconSource(R.drawable.ic_fruit_pineapple),
+            IconSource(painterResource(R.drawable.ic_fruit_pineapple)),
             titleText = "Pineapple",
         ),
     )

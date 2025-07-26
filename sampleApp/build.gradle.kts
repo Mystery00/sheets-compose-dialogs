@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.android)
+    alias(libs.plugins.compose)
     alias(libs.plugins.compose.compiler)
 }
 
@@ -51,9 +52,12 @@ dependencies {
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.navigation.compose)
-
+    implementation(libs.androidx.material3)
+    implementation(libs.material.icon)
+    implementation(libs.material.icon.extended)
 
     // Compose libs
+    implementation(libs.datetime)
 
     // Test libs
     androidTestImplementation(libs.androidx.test.core)

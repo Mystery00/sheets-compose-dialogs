@@ -31,10 +31,26 @@ internal fun InputSample3(closeSelection: () -> Unit) {
 
     val inputOptions = listOf(
         InputText(text = "In which countries have you already been?"),
-        InputCheckbox(text = "Germany", columns = 1),
-        InputCheckbox(text = "Thailand", columns = 1),
-        InputCheckbox(text = "Philippines", columns = 1),
-        InputCheckbox(text = "China", columns = 1),
+        InputCheckbox(
+            text = "Germany", columns = 1,
+            resultListener = { result ->
+                // Handle checkbox changed
+            }),
+        InputCheckbox(
+            text = "Thailand", columns = 1,
+            resultListener = { result ->
+                // Handle checkbox changed
+            }),
+        InputCheckbox(
+            text = "Philippines", columns = 1,
+            resultListener = { result ->
+                // Handle checkbox changed
+            }),
+        InputCheckbox(
+            text = "China", columns = 1,
+            resultListener = { result ->
+                // Handle checkbox changed
+            }),
     )
 
     InputDialog(
@@ -42,8 +58,7 @@ internal fun InputSample3(closeSelection: () -> Unit) {
         config = InputConfig(columns = 2),
         selection = InputSelection(
             input = inputOptions,
-            onPositiveClick = { result ->
-                val selectionIndex = result.getIntArray("Fruits") // or index 0 if no key was set
+            onPositiveClick = {
                 // Handle selection
             },
         )

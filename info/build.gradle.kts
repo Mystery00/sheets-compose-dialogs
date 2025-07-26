@@ -65,10 +65,12 @@ publishing {
     repositories {
         maven {
             name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/Mystery00/sheets-compose-dialogs")
+            url = uri(Repo.URI)
             credentials {
-                username = System.getenv("GITHUB_USERNAME") ?: project.property("gpr.user") as String? ?: ""
-                password = System.getenv("GITHUB_PASSWORD") ?: project.property("gpr.key") as String? ?: ""
+                username = System.getenv(Repo.ENV_USERNAME)
+                    ?: project.property(Repo.PROPS_USERNAME) as String? ?: ""
+                password = System.getenv(Repo.ENV_PASSWORD)
+                    ?: project.property(Repo.PROPS_PASSWORD) as String? ?: ""
             }
         }
     }
