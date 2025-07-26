@@ -1,7 +1,10 @@
 package com.maxkeppeler.sheets.date_time.utils
 
 import kotlinx.datetime.*
+import kotlin.time.Clock
+import kotlin.time.ExperimentalTime
 
+@OptIn(ExperimentalTime::class)
 internal fun LocalDate.Companion.now(): LocalDate {
     return Clock.System.now().toLocalDateTime(TimeZone.currentSystemDefault()).date
 }

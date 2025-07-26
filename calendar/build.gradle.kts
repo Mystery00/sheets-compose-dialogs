@@ -1,4 +1,3 @@
-
 /*
  *  Copyright (C) 2022-2024. Maximilian Keppeler (https://www.maxkeppeler.com)
  *
@@ -26,15 +25,14 @@ plugins {
 
 android {
     namespace = Modules.CALENDAR.namespace
-    compileSdk = 34
+    compileSdk = App.COMPILE_SDK
 
     defaultConfig {
-        minSdk = 21
+        minSdk = App.MIN_SDK
     }
     compileOptions {
-        isCoreLibraryDesugaringEnabled = true
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     lint {
         checkGeneratedSources = false
@@ -45,7 +43,7 @@ android {
 
 kotlin {
     androidTarget {
-        publishAllLibraryVariants()
+        publishLibraryVariants()
     }
     jvm()
 
@@ -56,11 +54,11 @@ kotlin {
     macosX64()
     macosArm64()
 
-//    js(IR) {
-//        moduleName = Modules.CALENDAR.moduleName
-//        browser()
-//        binaries.executable()
-//    }
+    js(IR) {
+        outputModuleName = Modules.CALENDAR.moduleName
+        browser()
+        binaries.executable()
+    }
 
     applyDefaultHierarchyTemplate()
 
@@ -89,18 +87,16 @@ kotlin {
     }
 }
 
-dependencies {
-    coreLibraryDesugaring(libs.desugar)
-}
-
 publishing {
     repositories {
         maven {
             name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/Mystery00/sheets-compose-dialogs")
+            url = uri(Repo.URI)
             credentials {
-                username = System.getenv("GITHUB_USERNAME") ?: project.property("gpr.user") as String? ?: ""
-                password = System.getenv("GITHUB_PASSWORD") ?: project.property("gpr.key") as String? ?: ""
+                username = System.getenv(Repo.ENV_USERNAME)
+                    ?: project.property(Repo.PROPS_USERNAME) as String? ?: ""
+                password = System.getenv(Repo.ENV_PASSWORD)
+                    ?: project.property(Repo.PROPS_PASSWORD) as String? ?: ""
             }
         }
     }

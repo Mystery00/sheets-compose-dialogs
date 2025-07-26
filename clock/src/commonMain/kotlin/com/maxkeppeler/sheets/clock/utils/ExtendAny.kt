@@ -1,10 +1,12 @@
 package com.maxkeppeler.sheets.clock.utils
 
-import kotlinx.datetime.Clock
+import kotlin.time.Clock
+import kotlin.time.ExperimentalTime
 import kotlinx.datetime.LocalTime
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
 
+@OptIn(ExperimentalTime::class)
 internal fun LocalTime.Companion.now(): LocalTime {
     return Clock.System.now().toLocalDateTime(TimeZone.currentSystemDefault()).time
 }

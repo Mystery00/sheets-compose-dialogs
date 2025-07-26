@@ -11,14 +11,14 @@ plugins {
 
 android {
     namespace = Modules.EMOJI.namespace
-    compileSdk = 34
+    compileSdk = App.COMPILE_SDK
 
     defaultConfig {
-        minSdk = 21
+        minSdk = App.MIN_SDK
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     lint {
         checkGeneratedSources = false
@@ -29,7 +29,7 @@ android {
 
 kotlin {
     androidTarget {
-        publishAllLibraryVariants()
+        publishLibraryVariants()
     }
     jvm()
 

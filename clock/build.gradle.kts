@@ -26,15 +26,14 @@ plugins {
 
 android {
     namespace = Modules.CLOCK.namespace
-    compileSdk = 34
+    compileSdk = App.COMPILE_SDK
 
     defaultConfig {
-        minSdk = 21
+        minSdk = App.MIN_SDK
     }
     compileOptions {
-        isCoreLibraryDesugaringEnabled = true
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     lint {
         checkGeneratedSources = false
@@ -45,7 +44,7 @@ android {
 
 kotlin {
     androidTarget {
-        publishAllLibraryVariants()
+        publishLibraryVariants()
     }
     jvm()
 
@@ -56,11 +55,11 @@ kotlin {
     macosX64()
     macosArm64()
 
-//    js(IR) {
-//        moduleName = Modules.CLOCK.moduleName
-//        browser()
-//        binaries.executable()
-//    }
+    js(IR) {
+        outputModuleName = Modules.CLOCK.moduleName
+        browser()
+        binaries.executable()
+    }
 
     applyDefaultHierarchyTemplate()
 
@@ -77,10 +76,6 @@ kotlin {
             api(project(":core"))
         }
     }
-}
-
-dependencies {
-    coreLibraryDesugaring(libs.desugar)
 }
 
 publishing {

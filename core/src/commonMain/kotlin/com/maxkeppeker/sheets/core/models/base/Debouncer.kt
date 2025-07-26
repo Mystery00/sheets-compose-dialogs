@@ -15,7 +15,8 @@
  */
 package com.maxkeppeker.sheets.core.models.base
 
-import kotlinx.datetime.Clock
+import kotlin.time.Clock
+import kotlin.time.ExperimentalTime
 
 /**
  * A class for time-based debouncing.
@@ -26,6 +27,7 @@ class Debouncer(private val delay: Long) {
 
     private var lastTime = 0L
 
+    @OptIn(ExperimentalTime::class)
     private val currentTime: Long
         get() = Clock.System.now().toEpochMilliseconds()
 
