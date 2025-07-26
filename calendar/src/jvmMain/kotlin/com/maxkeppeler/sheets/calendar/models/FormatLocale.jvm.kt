@@ -2,7 +2,9 @@ package com.maxkeppeler.sheets.calendar.models
 
 import kotlinx.datetime.DayOfWeek
 import kotlinx.datetime.LocalDate
+import kotlinx.datetime.toJavaDayOfWeek
 import kotlinx.datetime.toJavaLocalDate
+import kotlinx.datetime.toKotlinDayOfWeek
 import java.time.format.DateTimeFormatter
 import java.time.format.TextStyle
 import java.time.temporal.WeekFields
@@ -11,7 +13,7 @@ import java.util.Locale
 actual sealed class FormatLocale(private val locale: Locale) {
 
     actual val firstDayOfWeek: DayOfWeek
-        get() = WeekFields.of(locale).firstDayOfWeek
+        get() = WeekFields.of(locale).firstDayOfWeek.toKotlinDayOfWeek()
 
     actual open fun getDayOfWeekLabels(): Map<DayOfWeek, String> {
         return when (this) {
@@ -19,7 +21,7 @@ actual sealed class FormatLocale(private val locale: Locale) {
             is JAPANESE -> getJapaneseDayOfWeekLabels()
             else -> {
                 DayOfWeek.entries.associateWith { dayOfWeek ->
-                    dayOfWeek.getDisplayName(TextStyle.NARROW, locale)
+                    dayOfWeek.toJavaDayOfWeek().getDisplayName(TextStyle.NARROW, locale)
                 }
             }
         }
